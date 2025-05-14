@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학교 축제 리플렛</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+        body {
+            background-color: rgba(248, 222, 171, 0.52);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: 'Do Hyeon', sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        h1 {
+            color: #4d2602;
+        }
+
+        .header p {
+            color: #c40909;
+        }
+
+        .header img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .content {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .content h2 {
+            color: #333;
+        }
+
+        .content p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .notice ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            color: #666;
+            font-size: 0.9em;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .notice li {
+            margin: 5px 0;
+        }
+
+        .notice, .content {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .calendar {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            text-align: center;
+        }
+
+        .calendar-header {
+            background-color: #9ae8e8;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .calendar-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background-color: #2cb3bd;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-grid div {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .calendar-grid .day-header {
+            background-color: #9ae8e8;
+            color: white;
+        }
+
+        .highlight {
+            color: #ff3b4b;
+        }
+
+        .floor-plan {
+
+        }
+
+        .floor-plan h2 {
+            text-align: center;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #9ae8e8;
+            color: white;
+            font-weight: 700;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f1f1f1;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        @media (max-width: 600px) {
+            .content, .notice {
+                padding: 5px;
+                font-size: 0.8em;
+            }
+
+            .calendar {
+                width: 100%;
+            }
+
+            .calendar-grid div {
+                padding: 5px;
+            }
+
+            .floor-plan h2 {
+                font-size: 1em;
+            }
+
+            table, th, td {
+                font-size: 10px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+        }
+
+        .section-title {
+            color: #333;
+            font-size: 1.2em;
+            margin: 0
+        }
+
+        .performance-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .performance-item {
+            background-color: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-performance-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0 0 20px;
+        }
+
+        .sub-performance-item {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+
+
+        .swiper-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            object-fit: inherit;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            max-width: 100%;
+            max-height: 400px;
+            height: auto;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            margin-top: 10px;
+            overflow: hidden
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height:100%;
+            border: none;
+            overflow: hidden
+        }
+
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            font-family: 'Do Hyeon', sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .button img {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            margin-top: 10px;
+            object-fit: contain;
+        }
+
+        .button:hover {
+            background-color: #03fd1c;
+        }
+
+        @media (max-width: 600px) {
+            .button {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .button {
+                font-size: 12px;
+            }
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="image/main.png" alt=""/>
+        <h1>뜨거운 여름, 시원한 축제!</h1>
+        <p>가재울고등학교 울림제에 초대합니다.</p>
+        <h1>공지사항</h1>
+            <button class="button" onclick="window.open('pdf/student_notice.pdf', '_blank')">
+                학생 공지사항 보기<img src="icon/click.png" alt="Click icon" style="width: 20px; height: 20px; margin-left: 10px;">
+            </button>
+            <button class="button" onclick="window.open('https://docs.google.com/spreadsheets/d/1SCTamuv2D08tNWSbN9wgBMLvEp_aHZupPQl8WN9ZG0g/edit?usp=sharing', '_blank')">
+                실시간 공지 & 분실물 <img src="icon/click.png" alt="Click icon" style="width: 20px; height: 20px; margin-left: 10px;">
+            </button>
+        <h1>행사 안내</h1>
+        <div class="content">
+
+            <p><strong>일시:</strong> 2024년 7월 18일</p>
+            <p><strong>시간:</strong> 오전 8시 ~ 오후 3시 30분</p>
+            <p><strong>장소:</strong> <a href="https://naver.me/57wOiNVX">가재울고등학교</a></p>
+        </div>
+    </div>
+
+    <div class="calendar">
+        <div class="calendar-header">
+            <h2>2024년 7월</h2>
+        </div>
+        <div class="calendar-grid">
+            <div class="day-header">일</div>
+            <div class="day-header">월</div>
+            <div class="day-header">화</div>
+            <div class="day-header">수</div>
+            <div class="day-header">목</div>
+            <div class="day-header">금</div>
+            <div class="day-header">토</div>
+
+            <div></div>
+
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div>12</div>
+            <div>13</div>
+            <div>14</div>
+            <div>15</div>
+            <div>16</div>
+            <div>17</div>
+            <div class="highlight">18</div>
+            <div>19</div>
+            <div>20</div>
+            <div>21</div>
+            <div>22</div>
+            <div>23</div>
+            <div>24</div>
+            <div>25</div>
+            <div>26</div>
+            <div>27</div>
+            <div>28</div>
+            <div>29</div>
+            <div>30</div>
+            <div>31</div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <h1>동아리 부스</h1>
+    <h2 >부스 배치도</h2>
+    <div class="floor-plan">
+
+        <table>
+            <tr>
+                <th>층</th>
+                <th colspan="7">배치</th>
+            </tr>
+            <tr>
+                <td>5층</td>
+                <td colspan="3">공용교실(대)</td>
+                <td>2-5</td>
+                <td>2-6</td>
+                <td>2-7</td>
+                <td>2-8</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="3">국제시사탐구토론</td>
+                <td>오이</td>
+                <td>심리탐구 1</td>
+                <td>심리탐구 2</td>
+                <td>도서부</td>
+            </tr>
+            <tr>
+                <td>4층</td>
+                <td>1-7</td>
+                <td>1-8</td>
+                <td>2-1</td>
+                <td>2-2</td>
+                <td>2-3</td>
+                <td colspan="2">2-4</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>메디하트</td>
+                <td>방송반</td>
+                <td>미술반</td>
+                <td>데카콘</td>
+                <td>바움</td>
+                <td colspan="2">학생회</td>
+            </tr>
+            <tr>
+                <td>3층</td>
+                <td>1-2</td>
+                <td>1-3</td>
+                <td>1-4</td>
+                <td>1-5</td>
+                <td>1-6</td>
+                <td>화학생물실험실</td>
+                <td>물리지학실험실</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>코딩반</td>
+                <td>학생 기자단</td>
+                <td>스포츠 asldfalshjdflaskjdflaksjdflakjsdlfkjasdf통섭</td>
+                <td>디지털드로잉</td>
+                <td>학생회</td>
+                <td>생물화학</td>
+                <td>물리화학실험탐구</td>
+            </tr>
+        </table>
+    </div>
+    <h2 class="section-title" style="margin-top: 20px;"> 동아리별 혼잡도 및 공지사항 </h2>
+    <button class="button" onclick="window.open('https://docs.google.com/spreadsheets/d/1cFiXhN7YnqorckdRbr8OvDybeZ0TasPlHFxgCHq0ZXA/edit?gid=0#gid=0', '_blank')" style="margin-top: 10px;">
+        실시간 혼잡도 확인 <img src="icon/click.png" alt="Click icon" style="width: 20px; height: 20px; margin-bottom: 10px; margin-left: 10px;">
+    </button>
+
+<!--    <div class="iframe-container">-->
+<!--        <iframe src="https://docs.google.com/spreadsheets/d/1cFiXhN7YnqorckdRbr8OvDybeZ0TasPlHFxgCHq0ZXA/edit?usp=sharing"></iframe>-->
+<!--    </div>-->
+    <h2 class="section-title" style="margin-top: 20px;"> 동아리별 포스터 </h2>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="poster/1.jpg" alt="Poster 1"></div>
+            <div class="swiper-slide"><img src="poster/2.jpg" alt="Poster 2"></div>
+            <div class="swiper-slide"><img src="poster/3.jpg" alt="Poster 3"></div>
+            <div class="swiper-slide"><img src="poster/4.jpg" alt="Poster 4"></div>
+            <div class="swiper-slide"><img src="poster/5.jpg" alt="Poster 5"></div>
+            <div class="swiper-slide"><img src="poster/6.jpg" alt="Poster 6"></div>
+            <div class="swiper-slide"><img src="poster/7.jpg" alt="Poster 7"></div>
+            <div class="swiper-slide"><img src="poster/8.jpg" alt="Poster 8"></div>
+            <div class="swiper-slide"><img src="poster/9.jpg" alt="Poster 9"></div>
+            <div class="swiper-slide"><img src="poster/10.jpg" alt="Poster 10"></div>
+            <div class="swiper-slide"><img src="poster/11.jpg" alt="Poster 11"></div>
+            <div class="swiper-slide"><img src="poster/12.jpg" alt="Poster 12"></div>
+            <div class="swiper-slide"><img src="poster/13.png" alt="Poster 13"></div>
+            <div class="swiper-slide"><img src="poster/14.jpg" alt="Poster 14"></div>
+            <div class="swiper-slide"><img src="poster/15.jpg" alt="Poster 15"></div>
+            <div class="swiper-slide"><img src="poster/16.jpg" alt="Poster 16"></div>
+            <div class="swiper-slide"><img src="poster/17.jpg" alt="Poster 17"></div>
+            <div class="swiper-slide"><img src="poster/18.jpg" alt="Poster 18"></div>
+            <div class="swiper-slide"><img src="poster/19.jpg" alt="Poster 19"></div>
+            <div class="swiper-slide"><img src="poster/20.jpg" alt="Poster 20"></div>
+        </div>
+    </div>
+
+
+    <h1 class="title">울림제 공연</h1>
+    <h2 class="section-title">[1부] 3학년 공연</h2>
+    <ul class="performance-list">
+        <li class="performance-item"><strong>오프닝</strong></li>
+        <li class="performance-item"><strong>숭실대학교 응원단 위너스</strong></li>
+        <li class="performance-item"><strong>댄스부 sdd</strong></li>
+        <li class="performance-item"><strong>매월 승리/박건희</strong></li>
+        <li class="performance-item"><strong>가재울 숲튽훈/박수아 팀</strong></li>
+        <li class="performance-item"><strong>댄스부 illusion</strong></li>
+        <li class="performance-item"><strong>밴드부 daystar</strong></li>
+        <li class="performance-item"><strong>엔딩</strong></li>
+
+    </ul>
+    <h2 class="section-title">[2부] 1, 2학년 공연</h2>
+    <ul class="performance-list">
+        <li class="performance-item"><strong>1부 오프닝</strong></li>
+        <li class="performance-item"><strong>연극부 데아트론</strong> - 꽃보다가재</li>
+        <li class="performance-item"><strong>댄스부 illusion</strong></li>
+        <li class="performance-item"><strong>쮸쌤의 댄싱스타/김채연 팀</strong></li>
+        <li class="performance-item"><strong>경품 추첨</strong></li>
+        <li class="performance-item"><strong>복면가왕</strong>
+            <ul class="sub-performance-list">
+                <li class="sub-performance-item">1. 바나나 알러지 개코원숭이 팀</li>
+                <li class="sub-performance-item">2. 얘야 노래란 이렇게 하는 법이란다 팀</li>
+                <li class="sub-performance-item">3. 내 음색에 반할수박에 팀</li>
+                <li class="sub-performance-item">4. 너가 자는 사이 고막살인 팀</li>
+            </ul>
+        </li>
+        <li class="performance-item"><strong>2부 오프닝</strong></li>
+        <li class="performance-item"><strong>복면가왕 1등 발표 및 우승 팀 앵콜</strong></li>
+        <li class="performance-item"><strong>F5/김세원 팀</strong></li>
+        <li class="performance-item"><strong>MC공연</strong></li>
+        <li class="performance-item"><strong>뽕따/이예은 팀</strong></li>
+        <li class="performance-item"><strong>아이리스/양윤지 팀</strong></li>
+        <li class="performance-item"><strong>댄스부 Sdd</strong></li>
+        <li class="performance-item"><strong>밴드부 daystar</strong></li>
+        <li class="performance-item"><strong>엔딩</strong></li>
+    </ul>
+
+    <div class="footer">
+        <p>리플렛을 QR코드로 다른 친구들에게도 공유해주세요.</p>
+        <img src="image/qrcode.png" alt="" style="display: block; margin: 0 auto; max-width: 220px;"/>
+    </div>
+</div>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+        },
+    });
+</script>
+</body>
+</html>
